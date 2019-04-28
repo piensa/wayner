@@ -1,0 +1,23 @@
+diff --git a/sway/config.c b/sway/config.c
+index 64093aca..45080444 100644
+--- a/sway/config.c
++++ b/sway/config.c
+@@ -352,6 +352,7 @@ static bool file_exists(const char *path) {
+ 
+ static char *get_config_path(void) {
+ 	static const char *config_paths[] = {
++		"$SWAY_CONFIG_DIR",
+ 		"$HOME/.sway/config",
+ 		"$XDG_CONFIG_HOME/sway/config",
+ 		"$HOME/.i3/config",
+@@ -362,8 +363,8 @@ static char *get_config_path(void) {
+ 
+ 	char *config_home = getenv("XDG_CONFIG_HOME");
+ 	if (!config_home || !*config_home) {
+-		config_paths[1] = "$HOME/.config/sway/config";
+-		config_paths[3] = "$HOME/.config/i3/config";
++		config_paths[2] = "$HOME/.config/sway/config";
++		config_paths[4] = "$HOME/.config/i3/config";
+ 	}
+ 
+ 	for (size_t i = 0; i < sizeof(config_paths) / sizeof(char *); ++i) {

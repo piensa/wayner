@@ -23,6 +23,7 @@ stdenv.mkDerivation rec {
 
   patches = [
     ./sway-config-no-nix-store-references.patch
+    ./sway-config-env-var.patch
   ];
 
   nativeBuildInputs = [ pkgconfig meson ninja scdoc ];

@@ -9,7 +9,7 @@ stdenv.mkDerivation rec {
     owner = "Cloudef";
     repo = "bemenu";
     rev = "f27e35e";
-    sha256 = "09bc623y5yjbz7q83lhl6rb0xs6ji17z79c260bx0fgin8sfj5x8";
+    sha256 = "0aayzg0amg7rqrmkic5mln9lgmr7sidl0y35jha1dv2j6vsqjdxb";
   };
 
   cmakeFlags = [

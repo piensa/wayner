@@ -44,7 +44,7 @@ waylandPkgs = rec {
 
   blender-beta = pkgs.blender.override {
     pythonPackages = pkgs.python37Packages;
-  }).overrideAttrs (oldAttrs: rec {
+  }.overrideAttrs (oldAttrs: rec {
     name = "blender-2.80.beta-${version}";
     version = "141c6073ca39";
 

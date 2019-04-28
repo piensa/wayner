@@ -38,7 +38,26 @@ waylandPkgs = rec {
   # i3-related
   i3status-rust    = pkgs.callPackage ./pkgs/i3status-rust {};
 
-  #blender-beta = pkgs.blender.override {}
+  keepass-with-plugins = pkgs.keepass.override {
+    plugins = [ keepass-keefox ];
+  };
+
+  blender-beta = pkgs.blender.override {
+    pythonPackages = pkgs.python37Packages;
+  }).overrideAttrs (oldAttrs: rec {
+    name = "blender-2.80.beta-${version}";
+    version = "141c6073ca39";
+
+    src = fetchgit {
+      url = "https://git.blender.org/blender.git";
+      rev = version;
+      sha256 = "0g02y05hr5vim5g6myy16c1dvx6ah8xbjd1j5jw62qd10yfg4kfp";
+    };
+
+    cmakeFlags = oldAttrs.cmakeFlags ++ [
+      "-DPYTHON_NUMPY_PATH=${numpy}/${python.sitePackages}"
+    ];
+  });
 
 };
 in

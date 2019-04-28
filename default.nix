@@ -9,7 +9,7 @@ waylandPkgs = rec {
   wlroots          = pkgs.callPackage ./pkgs/wlroots {};
   xdg-desktop-portal-wlr = pkgs.callPackage ./pkgs/xdg-desktop-portal-wlr {};
   sway             = pkgs.callPackage ./pkgs/sway {};
-  dmenu            = pkgs.callPackage ./pkgs/dmenu {};
+  dmenu-wayland    = pkgs.callPackage ./pkgs/dmenu {};
   swc              = pkgs.callPackage ./pkgs/swc {};
   wld              = pkgs.callPackage ./pkgs/wld {};
   bemenu           = pkgs.callPackage ./pkgs/bemenu {};
@@ -37,6 +37,9 @@ waylandPkgs = rec {
 
   # i3-related
   i3status-rust    = pkgs.callPackage ./pkgs/i3status-rust {};
+
+  #blender-beta = pkgs.blender.override {}
+
 };
 in
   waylandPkgs // { inherit waylandPkgs; }

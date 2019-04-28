@@ -58,7 +58,7 @@ waylandPkgs = rec {
     };
 
     cmakeFlags = oldAttrs.cmakeFlags ++ [
-      "-DPYTHON_NUMPY_PATH=${numpy}/${python.sitePackages}"
+      "-DPYTHON_NUMPY_PATH=${pkgs.numpy}/${python.sitePackages}"
     ];
   });
 

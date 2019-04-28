@@ -39,7 +39,10 @@ waylandPkgs = rec {
   i3status-rust    = pkgs.callPackage ./pkgs/i3status-rust {};
 
   keepass-with-plugins = pkgs.keepass.override {
-    plugins = [ keepass-keefox ];
+    plugins = [ pkgs.keepass-keepassrpc
+                pkgs.keepass-keeagent
+                pkgs.keepass-keepasshttp
+              ];
   };
 
   blender-beta = pkgs.blender.override {

@@ -54,8 +54,25 @@ waylandPkgs = rec {
       sha256 = "0g02y05hr5vim5g6myy16c1dvx6ah8xbjd1j5jw62qd10yfg4kfp";
     };
 
-    cmakeFlags = oldAttrs.cmakeFlags ++ [
+    cmakeFlags = [
       "-DPYTHON_NUMPY_PATH=${pkgs.numpy}/${pkgs.python.sitePackages}"
+"-DWITH_MOD_OCEANSIM=ON"
+      "-DWITH_CODEC_FFMPEG=ON"
+      "-DWITH_CODEC_SNDFILE=ON"
+      "-DWITH_INSTALL_PORTABLE=OFF"
+      "-DWITH_FFTW3=ON"
+      #"-DWITH_SDL=ON"
+      "-DWITH_GAMEENGINE=ON"
+      "-DWITH_OPENCOLORIO=ON"
+      "-DWITH_SYSTEM_OPENJPEG=ON"
+      "-DWITH_PLAYER=ON"
+      "-DWITH_OPENSUBDIV=ON"
+      "-DPYTHON_LIBRARY=${pkgs.python.libPrefix}m"
+      "-DPYTHON_LIBPATH=${pkgs.python}/lib"
+      "-DPYTHON_INCLUDE_DIR=${pkgs.python}/include/${pkgs.python.libPrefix}m"
+      "-DPYTHON_VERSION=${pkgs.python.pythonVersion}"
+      "-DWITH_PYTHON_INSTALL=OFF"
+      "-DWITH_PYTHON_INSTALL_NUMPY=OFF"
     ];
   };
 };

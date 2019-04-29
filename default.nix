@@ -46,12 +46,11 @@ waylandPkgs = rec {
   };
 
   blender-beta = pkgs.blender.override {
-    name = "blender-2.80.beta-${version}";
+    name = "blender-2.80.beta-2019-04-28";
     pythonPackages = pkgs.python37Packages;
-    version = "141c6073ca39";
     src = pkgs.fetchgit {
       url = "https://git.blender.org/blender.git";
-      rev = version;
+      rev = "141c6073ca39";
       sha256 = "0g02y05hr5vim5g6myy16c1dvx6ah8xbjd1j5jw62qd10yfg4kfp";
     };
 

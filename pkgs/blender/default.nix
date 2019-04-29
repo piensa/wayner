@@ -1,7 +1,7 @@
 { config, stdenv, lib, fetchurl, boost, cmake, ffmpeg, gettext, glew, fetchgit
 , ilmbase, libXi, libX11, libXext, libXrender
 , libjpeg, libpng, libsamplerate, libsndfile
-, libtiff, libGLU_combined, openal, opencolorio, openexr, openimageio, openjpeg_1, pythonPackages
+, libtiff, libGLU_combined, openal, opencolorio, openexr, openimageio, openjpeg_1, python37Packages
 , zlib, fftw, opensubdiv, freetype, jemalloc, ocl-icd
 , jackaudioSupport ? false, libjack2
 , cudaSupport ? config.cudaSupport or false, cudatoolkit
@@ -11,7 +11,7 @@
 
 with lib;
 
-let python = pythonPackages.python; in
+let python = python37Packages.python; in
 
 stdenv.mkDerivation rec {
   name = "blender-2.80.beta-${version}";
@@ -59,7 +59,7 @@ stdenv.mkDerivation rec {
       "-DPYTHON_VERSION=${python.pythonVersion}"
       "-DWITH_PYTHON_INSTALL=OFF"
       "-DWITH_PYTHON_INSTALL_NUMPY=OFF"
-      "-DPYTHON_NUMPY_PATH=${pythonPackages.numpy}/${python.sitePackages}"
+      "-DPYTHON_NUMPY_PATH=${python37Packages.numpy}/${python.sitePackages}"
     ]
     ++ optional jackaudioSupport "-DWITH_JACK=ON"
     ++ optionals cudaSupport
@@ -80,7 +80,7 @@ stdenv.mkDerivation rec {
   postInstall = optionalString enableNumpy
     ''
       wrapProgram $out/bin/blender \
-        --prefix PYTHONPATH : ${pythonPackages.numpy}/${python.sitePackages}
+        --prefix PYTHONPATH : ${python37Packages.numpy}/${python.sitePackages}
     '';
 
   meta = with stdenv.lib; {

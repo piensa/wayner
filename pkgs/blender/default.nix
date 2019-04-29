@@ -1,4 +1,4 @@
-{ config, stdenv, lib, fetchurl, boost, cmake, ffmpeg, gettext, glew
+{ config, stdenv, lib, fetchurl, boost, cmake, ffmpeg, gettext, glew, fetchgit
 , ilmbase, libXi, libX11, libXext, libXrender
 , libjpeg, libpng, libsamplerate, libsndfile
 , libtiff, libGLU_combined, openal, opencolorio, openexr, openimageio, openjpeg_1, pythonPackages

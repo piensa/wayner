@@ -46,11 +46,9 @@ waylandPkgs = rec {
   };
 
   blender-beta = pkgs.blender.override {
-    pythonPackages = pkgs.python37Packages;
-  }.overrideAttrs (oldAttrs: rec {
     name = "blender-2.80.beta-${version}";
+    pythonPackages = pkgs.python37Packages;
     version = "141c6073ca39";
-
     src = pkgs.fetchgit {
       url = "https://git.blender.org/blender.git";
       rev = version;
@@ -62,7 +60,6 @@ waylandPkgs = rec {
     ];
   });
 
-};
 in
   waylandPkgs // { inherit waylandPkgs; }
 

@@ -59,7 +59,7 @@ stdenv.mkDerivation rec {
       "-DPYTHON_VERSION=${python.pythonVersion}"
       "-DWITH_PYTHON_INSTALL=OFF"
       "-DWITH_PYTHON_INSTALL_NUMPY=OFF"
-      "-DPYTHON_NUMPY_PATH=${numpy}/${python.sitePackages}"
+      "-DPYTHON_NUMPY_PATH=${pythonpackages.numpy}/${python.sitePackages}"
     ]
     ++ optional jackaudioSupport "-DWITH_JACK=ON"
     ++ optionals cudaSupport

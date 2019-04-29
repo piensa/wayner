@@ -45,36 +45,7 @@ waylandPkgs = rec {
               ];
   };
 
-  blender-beta = pkgs.blender.override {
-    name = "blender-2.80.beta-2019-04-28";
-    pythonPackages = pkgs.python37Packages;
-    src = pkgs.fetchgit {
-      url = "https://git.blender.org/blender.git";
-      rev = "141c6073ca39";
-      sha256 = "0g02y05hr5vim5g6myy16c1dvx6ah8xbjd1j5jw62qd10yfg4kfp";
-    };
-
-    cmakeFlags = [
-      "-DPYTHON_NUMPY_PATH=${pkgs.numpy}/${pkgs.python.sitePackages}"
-"-DWITH_MOD_OCEANSIM=ON"
-      "-DWITH_CODEC_FFMPEG=ON"
-      "-DWITH_CODEC_SNDFILE=ON"
-      "-DWITH_INSTALL_PORTABLE=OFF"
-      "-DWITH_FFTW3=ON"
-      #"-DWITH_SDL=ON"
-      "-DWITH_GAMEENGINE=ON"
-      "-DWITH_OPENCOLORIO=ON"
-      "-DWITH_SYSTEM_OPENJPEG=ON"
-      "-DWITH_PLAYER=ON"
-      "-DWITH_OPENSUBDIV=ON"
-      "-DPYTHON_LIBRARY=${pkgs.python.libPrefix}m"
-      "-DPYTHON_LIBPATH=${pkgs.python}/lib"
-      "-DPYTHON_INCLUDE_DIR=${pkgs.python}/include/${pkgs.python.libPrefix}m"
-      "-DPYTHON_VERSION=${pkgs.python.pythonVersion}"
-      "-DWITH_PYTHON_INSTALL=OFF"
-      "-DWITH_PYTHON_INSTALL_NUMPY=OFF"
-    ];
-  };
+  blender-beta = pkgs.callPackage ./pkgs/blender {};
 };
 in
   waylandPkgs // { inherit waylandPkgs; }

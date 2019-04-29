@@ -45,7 +45,7 @@ waylandPkgs = rec {
               ];
   };
 
-  blender-beta = pkgs.callPackage ./pkgs/blender {};
+  blender = pkgs.callPackage ./pkgs/blender {};
 };
 in
   waylandPkgs // { inherit waylandPkgs; }
